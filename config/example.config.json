@@ -1,0 +1,24 @@
+{
+  "development": {
+    "ServiceName": "TEST_MICRO_SERVICE",
+    "configId": "development",
+    "PORT": 3000,
+    "database": {
+      "host": "localhost",
+      "user": "root",
+      "password": "",
+      "name": "[MICROSERVICE-NAME]"
+    }
+  },
+  "production": {
+    "ServiceName": "TEST_MICRO_SERVICE",
+    "configId": "production",
+    "PORT": 4000,
+    "database": {
+      "host": "localhost",
+      "user": "root",
+      "password": "",
+      "name": "[MICROSERVICE-NAME]"
+    }
+  }
+}

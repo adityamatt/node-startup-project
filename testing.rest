@@ -1,0 +1,8 @@
+POST http://localhost:3000/test/testPath HTTP/1.1
+content-type: application/json
+
+{
+"email": "aditya.tiwarics@gmail.com",
+"password": "abc",
+"role" : "student"
+}
