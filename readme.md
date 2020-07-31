@@ -15,12 +15,12 @@ The base comes with following functionality
 
 ## Getting Started
 
-Make sure the following services are installed
+Make sure the following requirements are installed.
 
 ### Requirements
 
 - Nodejs
-- Mysql
+- Mysql server
 
 ## Building the project
 
@@ -31,6 +31,8 @@ npm install
 ```
 
 ## Running
+
+Before running, the project requires a config/config.json and .env file. use config/example.config.json to create config/config.json and example.env to create .env file
 
 To run in development environment with nodemon
 
