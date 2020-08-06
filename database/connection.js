@@ -14,18 +14,4 @@ let connection = new Sequelize(
     },
   }
 );
-
-connection
-  .authenticate()
-  .then(function (err) {
-    console.log(
-      "Connection has been established successfully to .",
-      gConfig.database.name
-    );
-  })
-  .catch(function (err) {
-    console.log("Unable to connect to the database:", err);
-    throw err;
-  });
-
 module.exports = connection;

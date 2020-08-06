@@ -3,25 +3,24 @@
 /**
  * Module dependencies.
  */
-
-var app = require("../app");
-var debug = require("debug")("myapp:server");
-var http = require("http");
 require("../config/config.js");
 require("dotenv").config();
+const app = require("../app");
+const debug = require("debug")("myapp:server");
+const http = require("http");
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(gConfig.PORT || "3000");
+const port = normalizePort(gConfig.PORT || "3000");
 app.set("port", port);
 
 /**
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
