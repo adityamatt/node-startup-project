@@ -1,4 +1,4 @@
-let Sequelize = require("sequelize");
+const Sequelize = require("sequelize");
 
 let connection = new Sequelize(
   gConfig.database.name,

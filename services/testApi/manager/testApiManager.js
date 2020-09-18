@@ -1,5 +1,5 @@
 function testApiManager(req, res) {
-  res.end("This is a test API");
+  res.json({ message: "This is a test API" });
 }
 
 module.exports = testApiManager;

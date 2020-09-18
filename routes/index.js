@@ -3,7 +3,7 @@ const router = require("express").Router();
  * Include all the routers in this index
  */
 
-testRouter = require("./testRoute");
+const testRouter = require("./testRoute");
 //testValidator = require("../apis/validator/test_api");
 
 router.use("/test", testRouter);

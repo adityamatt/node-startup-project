@@ -1,13 +1,9 @@
-testApiValidator = require("../../services/testApi/validator/testApiValidator");
-testApiManager = require("../../services/testApi/manager/testApiManager");
+const testApiValidator = require("../../services/testApi/validator/testApiValidator");
+const testApiManager = require("../../services/testApi/manager/testApiManager");
 
 class testApiController {
-  static controller = (req, res) => {
-    return testApiManager(req, res);
-  };
-  static validator = (req, res, next) => {
-    return testApiValidator(req, res, next);
-  };
+  static controller = testApiManager;
+  static validator = testApiValidator;
 }
 
 module.exports = testApiController;

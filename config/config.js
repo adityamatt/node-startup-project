@@ -1,19 +1,22 @@
-// requires
-const _ = require("lodash");
 const { argv } = require("yargs");
 const config = require("./config.json");
 
 let possibleEnvironments = Object.keys(config);
 const defaultConfig = config.development;
-const environment = argv.NODE_ENV || "development";
-
+let environment = argv.NODE_ENV || "development";
+if (process.env.JEST_WORKER_ID != undefined) {
+  environment = "testing";
+}
 if (!possibleEnvironments.includes(environment)) {
   console.log("NODE_ENV must be one of the ", possibleEnvironments);
   throw Error("Undefined NODE_ENV given");
 }
 
 const environmentConfig = config[environment];
-const finalConfig = environmentConfig || defaultConfig;
+let finalConfig = environmentConfig || defaultConfig;
+if (process.env.PORT) {
+  finalConfig.PORT = process.env.PORT;
+}
 
 // as a best practice
 // all global variables should be referenced via global. syntax
@@ -25,7 +28,9 @@ console.log(
   "Running SERCICE->",
   finalConfig.ServiceName,
   " ENVIRONMENT ->",
-  finalConfig.configId
+  finalConfig.configId,
+  " at port ",
+  finalConfig.PORT
 );
 // console.log(
 //   `global.gConfig: ${JSON.stringify(

@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const CONSTANTS = require("../../../config/constants");
 
 const bodySchema = Joi.object({
   email: Joi.string().email().required(),
@@ -7,20 +8,24 @@ const bodySchema = Joi.object({
     .required(),
   role: Joi.string().required(),
 });
-APIValidator = async function (req, res, next) {
+const APIValidator = async function (req, res, next) {
   try {
-    result = await bodySchema.validateAsync(req.body);
+    await bodySchema.validateAsync(req.body);
     next();
   } catch (err) {
+    let message = "";
+    res.status(CONSTANTS.RESPONSE_CODES.BAD_REQUEST);
     if (err.isJoi == true) {
       for (let i = 0; i < err.details.length; i++) {
-        res.send(err.details[i].message);
+        if (
+          err.details[i].message.includes("fails to match the required pattern")
+        ) {
+          message += " " + i + " Invalid AccessToken. ";
+        } else {
+          message += " " + i + err.details[i].message + " ";
+        }
       }
-
-      // err.details.array.forEach((element) => {
-      //   res.send(element.message);
-      // });
-      res.end();
+      res.json({ message: message });
     }
   }
 };
